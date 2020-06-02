@@ -33,4 +33,7 @@
     <Folder Include="Services\" />
     <Folder Include="Sqlite\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BaseMvvmToolKit\BaseMvvmToolKit.csproj" />
+  </ItemGroup>
 </Project>
