@@ -62,6 +62,7 @@
       <Version>7.1.0.442</Version>
     </PackageReference>
     <PackageReference Include="Rg.Plugins.Popup">
+      <Version>2.0.0.2</Version>
     </PackageReference>
     <PackageReference Include="SkiaSharp">
       <Version>1.68.3</Version>
