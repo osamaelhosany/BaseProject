@@ -1,4 +1,7 @@
 ﻿using System;
+using BaseMvvmToolKIt;
+using BaseProject.Services.FileSystem;
+using BaseProject.Services.Sqlite;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,19 +13,30 @@ namespace BaseProject
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            SetupDependencyInjection();
+            CreateDataBaseTables();
+            SetDefaultLanguage();
+            SetStartPage();
         }
 
-        protected override void OnStart()
+        private void SetupDependencyInjection()
+        {
+            IOC.Container.Register<ISqliteService, SqliteService>().AsSingleton();
+            IOC.Container.Register<IFileSystem, FileSystem>().AsSingleton();
+        }
+
+        private void CreateDataBaseTables()
+        {
+
+        }
+
+        private void SetDefaultLanguage()
         {
         }
 
-        protected override void OnSleep()
+        private void SetStartPage()
         {
-        }
 
-        protected override void OnResume()
-        {
         }
     }
 }
