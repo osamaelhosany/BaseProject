@@ -2,6 +2,7 @@
 using BaseMvvmToolKIt;
 using BaseProject.Services.FileSystem;
 using BaseProject.Services.Sqlite;
+using BaseProject.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -36,7 +37,10 @@ namespace BaseProject
 
         private void SetStartPage()
         {
-
+            var masterDetailNav = new MasterDetailNavigationContainer();
+            masterDetailNav.Init("Menu");
+            masterDetailNav.AddPage<MainViewModel>("Home");
+            MainPage = masterDetailNav;
         }
     }
 }

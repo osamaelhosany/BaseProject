@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using BaseMvvmToolKIt.Commands.WeakManager;
 using Xamarin.Forms;
 
 namespace BaseMvvmToolKIt
@@ -65,8 +66,8 @@ namespace BaseMvvmToolKIt
 
         internal void WireEvents(Page page)
         {
-            page.Appearing += new WeakEventHandler<EventArgs>(ViewIsAppearing).Handler;
-            page.Disappearing += new WeakEventHandler<EventArgs>(ViewIsDisappearing).Handler;
+            page.Appearing += new WeakEventManager<EventArgs>(ViewIsAppearing).Handler;
+            page.Disappearing += new WeakEventManager<EventArgs>(ViewIsDisappearing).Handler;
         }
 
         /// <summary>
@@ -120,7 +121,7 @@ namespace BaseMvvmToolKIt
             {
                 _navigationPage = navPage;
                 _alreadyAttached = true;
-                navPage.Popped += new WeakEventHandler<NavigationEventArgs>(HandleNavPagePopped).Handler;
+                navPage.Popped += new WeakEventManager<NavigationEventArgs>(HandleNavPagePopped).Handler;
             }
         }
 

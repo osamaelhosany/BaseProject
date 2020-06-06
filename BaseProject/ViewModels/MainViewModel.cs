@@ -7,6 +7,7 @@ namespace BaseProject.ViewModels
     {
         public MainViewModel()
         {
+            Title = "Main";
         }
     }
 }

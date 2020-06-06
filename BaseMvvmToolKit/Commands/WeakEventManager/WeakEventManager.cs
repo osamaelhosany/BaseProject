@@ -11,7 +11,7 @@ namespace BaseMvvmToolKIt.Commands.WeakManager
     /// Weak event manager that allows for garbage collection when the EventHandler is still subscribed
     /// </summary>
     /// <typeparam name="TEventArgs">Event args type.</typeparam>
-    public class WeakEventManager<TEventArgs>
+    public class WeakEventManager<TEventArgs> where TEventArgs : EventArgs
     {
         readonly Dictionary<string, List<Subscription>> _eventHandlers = new Dictionary<string, List<Subscription>>();
 
@@ -55,6 +55,28 @@ namespace BaseMvvmToolKIt.Commands.WeakManager
         /// <param name="eventName">Event name</param>
         public void HandleEvent(object sender, TEventArgs eventArgs, string eventName) =>
             EventManagerService.HandleEvent(eventName, sender, eventArgs, _eventHandlers);
+
+        private readonly WeakReference _targetReference;
+        private readonly MethodInfo _method;
+
+        public WeakEventManager(EventHandler<TEventArgs> callback)
+        {
+            _method = callback.GetMethodInfo();
+            _targetReference = new WeakReference(callback.Target, true);
+        }
+
+        public void Handler(object sender, TEventArgs e)
+        {
+            var target = _targetReference.Target;
+            if (target != null)
+            {
+                var callback = (Action<object, TEventArgs>)_method.CreateDelegate(typeof(Action<object, TEventArgs>), target);
+                if (callback != null)
+                {
+                    callback(sender, e);
+                }
+            }
+        }
     }
 
     /// <summary>
