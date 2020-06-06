@@ -11,6 +11,7 @@ namespace BaseProject.Constants
     {
        
         public static string DatabaseName = "DataBase101.db3";
+        public const string ErrorFileName = "Fatal.log";
 
     }
 }

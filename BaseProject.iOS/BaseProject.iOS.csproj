@@ -162,5 +162,9 @@
       <Project>{D1B61097-FFDB-4B92-B89C-AC37456F3CCA}</Project>
       <Name>BaseProject</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BaseMvvmToolKit\BaseMvvmToolKit.csproj">
+      <Project>{E8AD5F10-6B11-46FD-8749-136D7A04EB85}</Project>
+      <Name>BaseMvvmToolKit</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>
