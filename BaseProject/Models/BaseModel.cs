@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using SQLite;
 
 namespace BaseProject.Models
 {
     public class BaseModel : INotifyPropertyChanged
     {
-        
-    //   public string ID { get; set; }
+        [AutoIncrement]
+        [PrimaryKey]
+        public string ID { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = null)
         {
