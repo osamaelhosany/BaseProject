@@ -44,4 +44,13 @@
   <ItemGroup>
     <ProjectReference Include="..\BaseMvvmToolKit\BaseMvvmToolKit.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\AppResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Resources\AppResources.ar" />
+  </ItemGroup>
 </Project>
